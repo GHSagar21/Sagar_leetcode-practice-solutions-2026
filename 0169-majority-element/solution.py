@@ -1,31 +1,55 @@
-class Solution:
-    def majorityElement(self, nums: List[int]) -> int:
-        nums.sort()
-        n = len(nums)
-        return nums[n//2]
-
 # class Solution:
 #     def majorityElement(self, nums: List[int]) -> int:
-#        res, count = 0, 0
+#         nums.sort()
+#         n = len(nums)
+#         return nums[n//2]
 
-#        for n in nums:
-#         if count == 0:
-#             res = n
-#         count += (1 if n == res else -1)
-#         return res
+# # class Solution:
+# #     def majorityElement(self, nums: List[int]) -> int:
+# #        res, count = 0, 0
+
+# #        for n in nums:
+# #         if count == 0:
+# #             res = n
+# #         count += (1 if n == res else -1)
+# #         return res
 
        
        
        
        
-#        count = {}
-#        res, maxcount = 0, 0
+# #        count = {}
+# #        res, maxcount = 0, 0
 
-#        for n in nums:
-#         count[n] = 1 + count.get(n, 0)
-#         res = n if count[n] > maxcount else res
-#         maxcount = max(count[n], maxcount)
-#         return res
+# #        for n in nums:
+# #         count[n] = 1 + count.get(n, 0)
+# #         res = n if count[n] > maxcount else res
+# #         maxcount = max(count[n], maxcount)
+# #         return res
 
-            
-            
+
+
+
+
+
+
+
+
+
+
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        number = None
+        count = 0
+        n = len(nums)
+        for num in nums:
+            if count == 0:
+                number = num
+            if num == number:
+                count = count + 1
+            else:
+                count = count - 1
+        if nums.count(number) > len(nums) // 2:
+            return number
+        else:
+            return None
